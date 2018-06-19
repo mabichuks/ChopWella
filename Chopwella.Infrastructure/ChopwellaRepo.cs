@@ -36,7 +36,8 @@ namespace Chopwella.Infrastructure
 
         public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            IQueryable<T> query = context.Set<T>().Where(predicate);
+            return query;
         }
 
         public IEnumerable<T> GetAll()
