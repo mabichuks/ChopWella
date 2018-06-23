@@ -53,6 +53,18 @@
     <Compile Include="ChopwellaDBContext.cs" />
     <Compile Include="ChopwellaRepo.cs" />
     <Compile Include="DummyData.cs" />
+    <Compile Include="Migrations\201806232234190_Initial.cs" />
+    <Compile Include="Migrations\201806232234190_Initial.Designer.cs">
+      <DependentUpon>201806232234190_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806232249213_removeReqiredOnStaffEmail.cs" />
+    <Compile Include="Migrations\201806232249213_removeReqiredOnStaffEmail.Designer.cs">
+      <DependentUpon>201806232249213_removeReqiredOnStaffEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.cs" />
+    <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.Designer.cs">
+      <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -79,6 +91,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806232234190_Initial.resx">
+      <DependentUpon>201806232234190_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806232249213_removeReqiredOnStaffEmail.resx">
+      <DependentUpon>201806232249213_removeReqiredOnStaffEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.resx">
+      <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
