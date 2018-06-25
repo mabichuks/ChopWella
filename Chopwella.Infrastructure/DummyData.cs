@@ -14,16 +14,16 @@ namespace Chopwella.Infrastructure
         public static Vendor vendor1 = new Vendor { Name = "vendor A" };
         public static Vendor vendor2 = new Vendor { Name = "vendor B" };
 
-        public static Staff staff1 = new Staff { Name = "Osezuah Winifred", StaffId = "INT/01", Category = category4, Email = "winifred@gmail.com" };
-        public static Staff staff2 = new Staff { Name = "Mabi Chukwuma", StaffId = "INT/02", Category = category4, Email = "mabichukwua@gmail.com" };
-        public static Staff staff3 = new Staff { Name = "Oriahi Emmanuel", StaffId = "INT/03", Category = category4, Email = "oriahie@gmail.com" };
-        public static Staff staff4 = new Staff { Name = "Aremu Omolola", StaffId = "INT/04", Category = category4, Email = "aremuomolola@gmail.com" };
-        public static Staff staff5 = new Staff { Name = "Ochiaka Okechukwu", StaffId = "INT/05", Category = category4, Email = "okey@gmail.com" };
-        public static Staff staff6 = new Staff { Name = "Otega Samul", StaffId = "SNR/01", Category = category1, Email = "otega@gmail.com" };
-        public static Staff staff7 = new Staff { Name = "Isreal DashDash", StaffId = "SNR/03", Category = category1, Email = "isreal@gmail.com" };
-        public static Staff staff8 = new Staff { Name = "Olowoniwa Samuel", StaffId = "CNT/05", Category = category2, Email = "olowo@gmail.com" };
-        public static Staff staff9 = new Staff { Name = "Emmanuel Emamanuel", StaffId = "JNR/05", Category = category3, Email = "okey@gmail.com" };
-        public static Staff staff10 = new Staff { Name = "Adeleye Samuel", StaffId = "SNR/02", Category = category1, Email = "okey@gmail.com" };
+        public static Staff staff1 = new Staff { Name = "Osezuah Winifred", StaffNum = "INT/01", Category = category4, Email = "winifred@gmail.com" };
+        public static Staff staff2 = new Staff { Name = "Mabi Chukwuma", StaffNum = "INT/02", Category = category4, Email = "mabichukwua@gmail.com" };
+        public static Staff staff3 = new Staff { Name = "Oriahi Emmanuel", StaffNum = "INT/03", Category = category4, Email = "oriahie@gmail.com" };
+        public static Staff staff4 = new Staff { Name = "Aremu Omolola", StaffNum = "INT/04", Category = category4, Email = "aremuomolola@gmail.com" };
+        public static Staff staff5 = new Staff { Name = "Ochiaka Okechukwu", StaffNum = "INT/05", Category = category4, Email = "okey@gmail.com" };
+        public static Staff staff6 = new Staff { Name = "Otega Samul", StaffNum = "SNR/01", Category = category1, Email = "otega@gmail.com" };
+        public static Staff staff7 = new Staff { Name = "Isreal DashDash", StaffNum = "SNR/03", Category = category1, Email = "isreal@gmail.com" };
+        public static Staff staff8 = new Staff { Name = "Olowoniwa Samuel", StaffNum = "CNT/05", Category = category2, Email = "olowo@gmail.com" };
+        public static Staff staff9 = new Staff { Name = "Emmanuel Emamanuel", StaffNum = "JNR/05", Category = category3, Email = "okey@gmail.com" };
+        public static Staff staff10 = new Staff { Name = "Adeleye Samuel", StaffNum = "SNR/02", Category = category1, Email = "okey@gmail.com" };
 
         public static Visitor visitor1 = new Visitor { Name = "Lasisi Elenu", Staff = staff1 };
         public static Visitor visitor2 = new Visitor { Name = "Mark Angel", Staff = staff3 };

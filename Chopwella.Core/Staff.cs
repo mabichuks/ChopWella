@@ -4,7 +4,7 @@ namespace Chopwella.Core
 {
     public class Staff : BaseEntity
     {
-        public string StaffId { get; set; }
+        public string StaffNum { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public virtual Category Category { get; set; }
