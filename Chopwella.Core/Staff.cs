@@ -7,6 +7,7 @@ namespace Chopwella.Core
         public string StaffNum { get; set; }
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+        public bool IsDeleted { get; set; }
         public virtual Category Category { get; set; }
         public int CategoryId { get; set; }
     }

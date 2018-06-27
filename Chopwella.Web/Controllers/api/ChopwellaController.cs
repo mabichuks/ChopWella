@@ -1,13 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using Chopwella.Core;
+using Chopwella.ServiceInterface;
 using System.Web.Http;
 
 namespace Chopwella.Web.Controllers.api
 {
+
     public class ChopwellaController : ApiController
     {
+        //[Authorize(Roles ="ADMIN")]
+        private readonly IServices<Staff> _context;
+        public ChopwellaController(IServices<Staff> context)
+        {
+            _context = context;
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+
+            var staff = _context.GetSingle(id);
+            staff.IsDeleted = true;
+            _context.Save();
+            return Ok();
+        }
+
+        // Code for Inplementing Logical delete----Should be attached with the Index View---
+        //        @section scripts
+        //        {
+        //    <script>
+        //        $(document).ready(function () {
+        //            $(".js-delete").click(function(e) {
+        //                var link = $(e.target);
+        //                if (confirm("are you sure"))
+        //                {
+        //                    $.ajax({
+
+        //                    })
+        //                    $.ajax({
+        //                        url: "/api/delete/" + link.attr("data-staff-id"),
+        //                        method: "DELETE"
+        //                    })
+        //                        .done(function() {
+        //                        link.parents("tr").fadeOut(function() {
+        //                                $(this).remove();
+        //                        });
+        //                    })
+        //                        .fail(function() {
+        //                        alert("something failed");
+        //                    });
+        //                }
+
+        //            });
+
+        //        });
+        //    </script>
+
+
+        //}
+
+
+
     }
 }
