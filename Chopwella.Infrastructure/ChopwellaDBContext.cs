@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using Chopwella.Core;
+using System.Data.Entity;
 
 namespace Chopwella.Infrastructure
 {
@@ -8,5 +9,11 @@ namespace Chopwella.Infrastructure
         {
 
         }
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Visitor> Visitors { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
+        public DbSet<CheckIn> checkIns { get; set; }
     }
 }

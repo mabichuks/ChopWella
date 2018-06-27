@@ -33,7 +33,7 @@ namespace Chopwella.Services
 
         public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return repo.FindBy(predicate);
         }
 
         public IEnumerable<T> GetAll()
