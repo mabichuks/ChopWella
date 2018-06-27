@@ -4,7 +4,7 @@ using System.Web.Http;
 
 namespace Chopwella.Web.Controllers.api
 {
-
+    [RoutePrefix("api/chopwella")]
     public class ChopwellaController : ApiController
     {
         //[Authorize(Roles ="ADMIN")]
@@ -14,6 +14,7 @@ namespace Chopwella.Web.Controllers.api
             _context = context;
         }
 
+        [Route("delete/{id}")]
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
@@ -37,7 +38,7 @@ namespace Chopwella.Web.Controllers.api
 
         //                    })
         //                    $.ajax({
-        //                        url: "/api/delete/" + link.attr("data-staff-id"),
+        //                        url: "/api//" + link.attr("data-staff-id"),
         //                        method: "DELETE"
         //                    })
         //                        .done(function() {
