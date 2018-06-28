@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Chopwella.Infrastructure
 {
-    class ChopwellaRepo<T> : IRepository<T> where T : BaseEntity
+    public class ChopwellaRepo<T> : IRepository<T> where T : BaseEntity
     {
         private readonly ChopwellaDBContext context;
 

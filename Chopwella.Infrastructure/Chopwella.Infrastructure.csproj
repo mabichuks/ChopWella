@@ -65,6 +65,18 @@
     <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.Designer.cs">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806271205448_changes.cs" />
+    <Compile Include="Migrations\201806271205448_changes.Designer.cs">
+      <DependentUpon>201806271205448_changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.cs" />
+    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.Designer.cs">
+      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.cs" />
+    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.Designer.cs">
+      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -101,6 +113,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.resx">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806271205448_changes.resx">
+      <DependentUpon>201806271205448_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806280851027_removeRequiredOnBaseEntity.resx">
+      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806280912254_addEmailAddressNotationToStaff.resx">
+      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
