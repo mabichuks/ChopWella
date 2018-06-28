@@ -61,6 +61,7 @@ namespace Chopwella.Web.Controllers.api
         }
 
         [Route("deleteCategory/{Id}")]
+        [HttpDelete]
         public HttpResponseMessage DeleteCategory(int Id)
         {
             try
