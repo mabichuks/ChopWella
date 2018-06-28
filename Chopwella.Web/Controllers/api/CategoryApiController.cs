@@ -59,18 +59,21 @@ namespace Chopwella.Web.Controllers.api
             }
 
         }
-        [Route("deleteCategory")]
+
+        [Route("deleteCategory/{Id}")]
         public HttpResponseMessage DeleteCategory(int Id)
         {
             try
             {
                 var cat = categoryservice.GetSingle(Id);
+
+                if (cat == null) return this.Request.CreateResponse(HttpStatusCode.Created, "Wrong CategoryId");
+
                 categoryservice.Delete(cat);
                 return this.Request.CreateResponse(HttpStatusCode.Created, "Deleted Successful");
             }
             catch (Exception ex)
             {
-
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
 
