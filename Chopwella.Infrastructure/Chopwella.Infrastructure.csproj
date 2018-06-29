@@ -65,6 +65,14 @@
     <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.Designer.cs">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806271037398_DeleteAction.cs" />
+    <Compile Include="Migrations\201806271037398_DeleteAction.Designer.cs">
+      <DependentUpon>201806271037398_DeleteAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806290944359_CompleteDeleteFix.cs" />
+    <Compile Include="Migrations\201806290944359_CompleteDeleteFix.Designer.cs">
+      <DependentUpon>201806290944359_CompleteDeleteFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -101,6 +109,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.resx">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806271037398_DeleteAction.resx">
+      <DependentUpon>201806271037398_DeleteAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806290944359_CompleteDeleteFix.resx">
+      <DependentUpon>201806290944359_CompleteDeleteFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
