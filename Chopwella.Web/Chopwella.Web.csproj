@@ -121,6 +121,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\CheckInController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,13 +139,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
+      <Project>{f79e995d-fc51-406d-9520-915283a8062a}</Project>
+      <Name>Chopwella.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chopwella.DomainInterface\Chopwella.DomainInterface.csproj">
+      <Project>{454a3404-5bcb-4bef-87f1-11f17da8d72f}</Project>
+      <Name>Chopwella.DomainInterface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chopwella.Infrastructure\Chopwella.Infrastructure.csproj">
       <Project>{C59D2B40-27DA-4E38-B018-2885AF33CCCE}</Project>
       <Name>Chopwella.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chopwella.ServiceInterface\Chopwella.ServiceInterface.csproj">
+      <Project>{74e8f1d3-fc54-465a-97e0-76a04ccd1aab}</Project>
+      <Name>Chopwella.ServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chopwella.Services\Chopwella.Services.csproj">
+      <Project>{98c68414-a183-4398-8788-b2b18ac28291}</Project>
+      <Name>Chopwella.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
