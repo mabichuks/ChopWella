@@ -7,7 +7,6 @@ namespace Chopwella.Infrastructure
     {
         public ChopwellaDBContext() : base("ChopWellaDB")
         {
-
         }
 
         public DbSet<Category> Categories { get; set; }
