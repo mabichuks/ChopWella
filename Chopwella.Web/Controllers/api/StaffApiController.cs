@@ -79,5 +79,24 @@ namespace Chopwella.Web.Controllers.api
             }
 
         }
+
+        [Route("delete/{id}")]
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                var staff = staffservice.GetSingle(id);
+                staffservice.Delete(staff);
+                staffservice.Save();
+                return Request.CreateResponse(HttpStatusCode.OK, "Record has been successfully deleted");
+            }
+
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }
