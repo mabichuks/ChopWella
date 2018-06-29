@@ -1,5 +1,8 @@
 ﻿using Chopwella.Core;
 using Chopwella.ServiceInterface;
+using System;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace Chopwella.Web.Controllers.api
@@ -8,24 +11,40 @@ namespace Chopwella.Web.Controllers.api
     public class ChopwellaController : ApiController
     {
         //[Authorize(Roles ="ADMIN")]
-        private readonly IServices<Staff> _context;
-        public ChopwellaController(IServices<Staff> context)
+
+
+
+        private readonly IServices<Staff> _service;
+        public ChopwellaController(IServices<Staff> service)
         {
-            _context = context;
+            _service = service;
         }
+
+
+
 
         [Route("delete/{id}")]
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            try
+            {
+                var staff = _service.GetSingle(id);
+                _service.Delete(staff);
+                _service.Save();
+                return Request.CreateResponse(HttpStatusCode.OK, "Record has been successfully deleted");
+            }
 
-            var staff = _context.GetSingle(id);
-            staff.IsDeleted = true;
-            _context.Save();
-            return Ok();
+            catch (Exception ex)
+            {
+
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
         }
+       
 
-        // Code for Inplementing Logical delete----Should be attached with the Index View---
+
+        // Code for Inplementing delete----Should be attached with the Index View---
         //        @section scripts
         //        {
         //    <script>
