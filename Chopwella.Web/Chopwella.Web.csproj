@@ -123,32 +123,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\api\ChopwellaController.cs" />
+    <Compile Include="Controllers\api\CategoryApiController.cs" />
+    <Compile Include="Controllers\api\StaffApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,9 +140,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,11 +150,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Chopwella\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
       <Project>{F79E995D-FC51-406D-9520-915283A8062A}</Project>
       <Name>Chopwella.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Chopwella.DomainInterface\Chopwella.DomainInterface.csproj">
+      <Project>{454a3404-5bcb-4bef-87f1-11f17da8d72f}</Project>
+      <Name>Chopwella.DomainInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chopwella.Infrastructure\Chopwella.Infrastructure.csproj">
       <Project>{C59D2B40-27DA-4E38-B018-2885AF33CCCE}</Project>
@@ -185,7 +170,7 @@
       <Name>Chopwella.ServiceInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\Chopwella.Services\Chopwella.Services.csproj">
-      <Project>{98C68414-A183-4398-8788-B2B18AC28291}</Project>
+      <Project>{98c68414-a183-4398-8788-b2b18ac28291}</Project>
       <Name>Chopwella.Services</Name>
     </ProjectReference>
   </ItemGroup>

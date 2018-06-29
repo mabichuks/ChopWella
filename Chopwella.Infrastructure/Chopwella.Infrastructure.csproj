@@ -65,13 +65,17 @@
     <Compile Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.Designer.cs">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806271037398_DeleteAction.cs" />
-    <Compile Include="Migrations\201806271037398_DeleteAction.Designer.cs">
-      <DependentUpon>201806271037398_DeleteAction.cs</DependentUpon>
+    <Compile Include="Migrations\201806271205448_changes.cs" />
+    <Compile Include="Migrations\201806271205448_changes.Designer.cs">
+      <DependentUpon>201806271205448_changes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806290944359_CompleteDeleteFix.cs" />
-    <Compile Include="Migrations\201806290944359_CompleteDeleteFix.Designer.cs">
-      <DependentUpon>201806290944359_CompleteDeleteFix.cs</DependentUpon>
+    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.cs" />
+    <Compile Include="Migrations\201806280851027_removeRequiredOnBaseEntity.Designer.cs">
+      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.cs" />
+    <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.Designer.cs">
+      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
@@ -110,11 +114,14 @@
     <EmbeddedResource Include="Migrations\201806232253536_removeReqiredOnBaseEntityNAme.resx">
       <DependentUpon>201806232253536_removeReqiredOnBaseEntityNAme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806271037398_DeleteAction.resx">
-      <DependentUpon>201806271037398_DeleteAction.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806271205448_changes.resx">
+      <DependentUpon>201806271205448_changes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806290944359_CompleteDeleteFix.resx">
-      <DependentUpon>201806290944359_CompleteDeleteFix.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806280851027_removeRequiredOnBaseEntity.resx">
+      <DependentUpon>201806280851027_removeRequiredOnBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806280912254_addEmailAddressNotationToStaff.resx">
+      <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

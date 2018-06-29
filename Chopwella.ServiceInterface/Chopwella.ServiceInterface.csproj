@@ -43,5 +43,11 @@
     <Compile Include="IServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
+      <Project>{F79E995D-FC51-406D-9520-915283A8062A}</Project>
+      <Name>Chopwella.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
