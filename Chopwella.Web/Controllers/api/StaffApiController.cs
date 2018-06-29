@@ -80,7 +80,7 @@ namespace Chopwella.Web.Controllers.api
 
         }
 
-        [Route("delete/{id}")]
+        [Route("deleteStaff/{id}")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
