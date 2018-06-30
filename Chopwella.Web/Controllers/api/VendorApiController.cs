@@ -61,7 +61,28 @@ namespace Chopwella.Web.Controllers.api
 
         }
 
-        [Route("deleteCategory/{Id}")]
+        [Route("editVendor")]
+        public HttpResponseMessage EditVendor([FromBody] Vendor v)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return this.Request.CreateResponse(HttpStatusCode.BadRequest, "your fields are not valid");
+                }
+
+                vendorservice.Edit(v);
+
+                return this.Request.CreateResponse(HttpStatusCode.Created, "Updated Successfully");
+            }
+            catch (Exception ex)
+            {
+
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+        [Route("deleteVendor/{Id}")]
         [HttpDelete]
         public HttpResponseMessage DeleteVendor(int Id)
         {
