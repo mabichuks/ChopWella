@@ -132,6 +132,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\CategoryApiController.cs" />
     <Compile Include="Controllers\api\StaffApiController.cs" />
+    <Compile Include="Controllers\api\VendorApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

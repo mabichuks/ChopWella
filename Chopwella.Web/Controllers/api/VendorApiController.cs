@@ -10,22 +10,23 @@ using System.Web.Http;
 namespace Chopwella.Web.Controllers.api
 {
     [RoutePrefix("api/chopwella")]
-    public class CategoryApiController : ApiController
-    {
-        private readonly IServices<Category> categoryservice;
 
-        public CategoryApiController(IServices<Category> categoryservice)
+    public class VendorApiController : ApiController
+    {
+        private readonly IServices<Vendor> vendorservice;
+
+        public VendorApiController(IServices<Vendor> vendorservice)
         {
-            this.categoryservice = categoryservice;
+            this.vendorservice = vendorservice;
         }
 
-        [Route("category")]
-        public HttpResponseMessage GetCatetories()
+        [Route("vendors")]
+        public HttpResponseMessage GetVendors()
         {
             try
             {
-                var staff = categoryservice.GetAll();
-                return this.Request.CreateResponse<IEnumerable<Category>>(HttpStatusCode.Created, staff);
+                var vendors = vendorservice.GetAll();
+                return this.Request.CreateResponse<IEnumerable<Vendor>>(HttpStatusCode.Created, vendors);
             }
             catch (Exception ex)
             {
@@ -33,9 +34,9 @@ namespace Chopwella.Web.Controllers.api
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
-        [Route("addCategory")]
+        [Route("addvendor")]
         [HttpPost]
-        public HttpResponseMessage AddCategory([FromBody]Category c)
+        public HttpResponseMessage AddVendor([FromBody]Vendor v)
         {
             try
             {
@@ -44,12 +45,12 @@ namespace Chopwella.Web.Controllers.api
                     return this.Request.CreateResponse(HttpStatusCode.BadRequest, "your fields are not valid");
                 }
 
-                IEnumerable<Category> categories = categoryservice.GetAll();
-                var checkCategory = categories.FirstOrDefault(m => m.Name == c.Name);
+                IEnumerable<Vendor> vendors = vendorservice.GetAll();
+                var checkVendor = vendors.FirstOrDefault(m => m.Name == v.Name);
 
-                if (checkCategory != null) return this.Request.CreateResponse(HttpStatusCode.Conflict, "Category Already Exist");
+                if (checkVendor != null) return this.Request.CreateResponse(HttpStatusCode.Conflict, "Vendor Already Exist");
 
-                categoryservice.Add(c);
+                vendorservice.Add(v);
                 return this.Request.CreateResponse(HttpStatusCode.Created, "Added Successfully");
             }
             catch (Exception ex)
@@ -62,15 +63,15 @@ namespace Chopwella.Web.Controllers.api
 
         [Route("deleteCategory/{Id}")]
         [HttpDelete]
-        public HttpResponseMessage DeleteCategory(int Id)
+        public HttpResponseMessage DeleteVendor(int Id)
         {
             try
             {
-                var cat = categoryservice.GetSingle(Id);
+                var cat = vendorservice.GetSingle(Id);
 
-                if (cat == null) return this.Request.CreateResponse(HttpStatusCode.Created, "Wrong CategoryId");
+                if (cat == null) return this.Request.CreateResponse(HttpStatusCode.Created, "Invalid VendorId");
 
-                categoryservice.Delete(cat);
+                vendorservice.Delete(cat);
                 return this.Request.CreateResponse(HttpStatusCode.Created, "Deleted Successfully");
             }
             catch (Exception ex)
