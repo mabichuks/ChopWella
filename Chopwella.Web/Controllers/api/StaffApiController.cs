@@ -81,7 +81,7 @@ namespace Chopwella.Web.Controllers.api
         }
 
         [Route("editStaff")]
-        public HttpResponseMessage EditVendor([FromBody] Staff v)
+        public HttpResponseMessage EditStaff([FromBody] Staff v)
         {
             try
             {
