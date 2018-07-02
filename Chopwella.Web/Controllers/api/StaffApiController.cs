@@ -101,7 +101,7 @@ namespace Chopwella.Web.Controllers.api
 
         [Route("EditStaff")]
         [HttpPost]
-        public HttpResponseMessage EditStaff( Staff staff)
+        public HttpResponseMessage EditStaff(Staff staff)
         {
             try
             {
