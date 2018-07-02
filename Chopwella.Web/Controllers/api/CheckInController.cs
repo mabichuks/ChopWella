@@ -9,64 +9,83 @@ using System.Web.Http;
 
 namespace Chopwella.Web.Controllers.api
 {
-   
-        [RoutePrefix("api/chopwella")]
-        public class CheckInController : ApiController
+    [RoutePrefix("api/chopwella")]
+    public class CheckInController : ApiController
+    {
+        private readonly ChopWellaService<CheckIn> _checkinservice;
+        public CheckInController(ChopWellaService<CheckIn> checkinservice)
         {
-            private readonly ChopWellaService<CheckIn> _checkinservice;
-            public CheckInController(ChopWellaService<CheckIn> checkinservice)
+            _checkinservice = checkinservice;
+        }
+        [Route("CheckInDetails")]
+        [HttpGet]
+        public HttpResponseMessage GetCheckIn()
+        {
+            try
             {
-                _checkinservice = checkinservice;
+                var check = _checkinservice.GetAll();
+                return this.Request.CreateResponse<IEnumerable<CheckIn>>(HttpStatusCode.Created, check);
             }
-            [Route("CheckIn")]
-            [HttpPost]
-            public HttpResponseMessage GetCheckIn()
+            catch (Exception message)
             {
-                try
-                {
-                    var check = _checkinservice.GetAll();
-                    return this.Request.CreateResponse<IEnumerable<CheckIn>>(HttpStatusCode.Created, check);
-                }
-                catch (Exception message)
-                {
-                    return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
-                }
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
             }
-            [Route("AddCheckin")]
-            public HttpResponseMessage AddCheckin([FromBody]CheckIn cs)
+        }
+        [Route("AddCheckin")]
+        [HttpPost]
+        public HttpResponseMessage AddCheckin(CheckIn Id)
+        {
+            try
             {
-                try
+               CheckIn check = _checkinservice.GetAll().FirstOrDefault(c => c.StaffId==Id.StaffId);
+                if(check!=null && Id.IsChecked==true)
                 {
-
-                    IEnumerable<CheckIn> check = _checkinservice.GetAll();
-                    var checkday = check.FirstOrDefault(c => c.IsChecked == cs.IsChecked);
-                    if (checkday != null)
-                        return this.Request.CreateResponse(HttpStatusCode.NoContent, "not checked");
-                    _checkinservice.Add(cs);
-                    return this.Request.CreateResponse(HttpStatusCode.Created, "Added");
-
+                    _checkinservice.Add(Id);
+                    return this.Request.CreateResponse(HttpStatusCode.Created, _checkinservice);
                 }
-                catch (Exception message)
-                {
-                    return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
-                }
+                return Request.CreateResponse(HttpStatusCode.NoContent, "not checked");
+
+                //var checkday = check.FirstOrDefault(c => c.IsChecked == cs.IsChecked);
+                //if (checkday == null)
+                //    return this.Request.CreateResponse(HttpStatusCode.NoContent, "not checked");
+                ////to not allow double checkin
+                //if (check.Any(c => c.IsChecked == checkday.IsChecked))
+                //{
+                //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "already checked in");
+                //}
+               
+
             }
-            [Route("Checkin/{Id}")]
-            public HttpResponseMessage GetCheckinbyDay([FromUri]DateTime Id)
+            catch (Exception message)
             {
-                try
-                {
-                    IEnumerable<CheckIn> check = _checkinservice.GetAll();
-                    var checkinbyId = check.Where(m => m.Date.Date == Id).ToList();
-
-                    return this.Request.CreateResponse<IEnumerable<CheckIn>>(HttpStatusCode.Created, checkinbyId);
-                }
-                catch (Exception message)
-                {
-
-                    return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
-                }
+                return this.Request.CreateResponse(HttpStatusCode.BadRequest, message.Message);
             }
+        }
+        [Route("CheckinbyId")]
+        [HttpGet]
+        public HttpResponseMessage GetCheckinbyDay(DateTime Id)
+        {
+            try
+            {
+                IEnumerable<CheckIn> check = _checkinservice.GetAll().Select(c => new CheckIn
+                {
+                   
+                    StaffId = c.StaffId,
+                    Vendor = c.Vendor,
+                    IsChecked = c.IsChecked
+                }).ToList();
+                var checkinbyId = check.Where(m => m.Date == Id).ToList();
+                if (checkinbyId == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+                return Request.CreateResponse<IEnumerable<CheckIn>>(HttpStatusCode.OK, checkinbyId);
+            }
+            catch (Exception message)
+            {
 
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
+            }
         }
     }
+}
