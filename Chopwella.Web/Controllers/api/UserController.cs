@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Chopwella.Web.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
