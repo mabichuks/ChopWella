@@ -22,10 +22,10 @@ namespace Chopwella.Web.Models
         [Compare("Password", ErrorMessage = "Passwords Do not match")]
         public string ConfirmPassword { get; set; }
 
-        public int Role { get; set; }
+        public int RoleId { get; set; }
         public Role Role { get; set; }
 
-        public virtual IEnumerable<Role> Role { get; set; }
+        public virtual IEnumerable<Role> Roles { get; set; }
 
     }
 }
