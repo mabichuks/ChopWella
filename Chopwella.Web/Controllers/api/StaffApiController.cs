@@ -119,5 +119,22 @@ namespace Chopwella.Web.Controllers.api
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+
+
+        [Route("EditStaff")]
+        [HttpPost]
+        public HttpResponseMessage EditStaff(Staff staff)
+        {
+            try
+            {
+                staffservice.Edit(staff);
+                return this.Request.CreateResponse(HttpStatusCode.Created, staff);
+            }
+            catch (Exception ex)
+            {
+
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
     }
 }
