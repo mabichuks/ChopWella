@@ -80,7 +80,8 @@ namespace Chopwella.Web.Controllers.api
 
         }
 
-        [Route("delete/{id}")]
+
+        [Route("deleteStaff/{id}")]
         [HttpDelete]
         public HttpResponseMessage Delete(int id)
         {
@@ -96,6 +97,29 @@ namespace Chopwella.Web.Controllers.api
             {
 
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
+        [Route("editStaff")]
+        [HttpPost]
+        public HttpResponseMessage EditStaff(Staff staff)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return this.Request.CreateResponse(HttpStatusCode.BadRequest, "your fields are not valid");
+                }
+
+                staffservice.Edit(staff);
+
+                return this.Request.CreateResponse(HttpStatusCode.Created, "Updated Successfully");
+            }
+            catch (Exception ex)
+            {
+
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }
