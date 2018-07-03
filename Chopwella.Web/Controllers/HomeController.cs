@@ -1,25 +1,22 @@
 ﻿using Chopwella.Core;
-using Chopwella.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Chopwella.ServiceInterface;
 using System.Web.Mvc;
 
 namespace Chopwella.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ChopWellaService<CheckIn> _chopWellaService;
-        public HomeController(ChopWellaService<CheckIn> chopWellaService)
+        private readonly IServices<Category> catservice;
+
+        public HomeController(IServices<Category> catservice)
         {
-            _chopWellaService = chopWellaService;
+            this.catservice = catservice;
         }
         // GET: Home
         public ActionResult Index()
         {
-            List<CheckIn> all = _chopWellaService.GetAll().ToList();
-            return View(all);
+            ViewBag.Categories = catservice.GetAll();
+            return View();
         }
     }
 }
