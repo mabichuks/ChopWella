@@ -45,19 +45,17 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script>
 
-        //$(document).ready(function () {
-        //    var datatable = $('#checkinTb').DataTable();
-        //    datatable.destroy();
-        //});
+        $(document).ready(function () {
+            var datatable = $('#checkinTb').DataTable();
+        });
 
         var table = $('#checkinTb');
 
         $(".catId").change(function (event) {
             var catId = $(this).val();
-
-            //if (!$.fn.DataTable.isDataTable('#checkinTb')) {
+            $(function () {
+                table.DataTable().destroy();
                 table.DataTable({
-
                     "ajax": {
                         "url": "api/chopwella/staffbyCat/" + catId,
                         "type": "GET",
@@ -97,14 +95,8 @@
                         "checkinTb": "No Record found"
                     }
                 });
-            //} else {
-            //    $('#checkinTb').DataTable().draw();
-            //}
-
+            });
         });
-
-
-
 
 
         $('#checkinTb').on('click', 'a', function (e) {
