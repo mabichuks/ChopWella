@@ -28,7 +28,7 @@ namespace Chopwella.Web.Controllers
         public ActionResult Logout()
         {
             var ctxt = this.Request.GetOwinContext();
-            ctxt.Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Authmgr.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
 
             return Redirect("Login");
         }
