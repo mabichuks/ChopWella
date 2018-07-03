@@ -108,13 +108,25 @@
 
 
         $('#checkinTb').on('click', 'a', function (e) {
-            if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
-            }
+           
+            if (confirm("Please Confirm you are signing against your name, because you can't unsign"))
+            {       
+                var data = $('#checkinTb').serialize();
 
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/chopwella/AddtoCheckin',
+                    data: data,
+                    success: function (newchecks) {
+
+                    }
+                });
+                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");                         
+
+            }          
 
         });
-
+       
 
     </script>
 }

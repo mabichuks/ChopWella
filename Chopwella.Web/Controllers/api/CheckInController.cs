@@ -1,5 +1,6 @@
 ﻿using Chopwella.Core;
 using Chopwella.Services;
+using Chopwella.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,46 @@ namespace Chopwella.Web.Controllers.api
 
                 return this.Request.CreateResponse(HttpStatusCode.InternalServerError, message.Message);
             }
+        }
+        [HttpPost]
+        [Route("AddtoCheckin")]
+        //public HttpResponseMessage AddtoCheckin(CheckIn Id)
+        //{
+        //    try
+        //    {
+        //        IEnumerable<CheckIn> checkIns = _checkinservice.GetAll();
+        //        var addcheck = checkIns.FirstOrDefault(m => m.IsChecked == Id.IsChecked);
+        //        _checkinservice.Add(Id);
+
+        //        _checkinservice.Save();
+        //        return Request.CreateResponse(HttpStatusCode.OK, _checkinservice);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+        //    }
+
+        //}
+        public HttpResponseMessage AddtoCheckin(CheckinViewModel model)
+        {
+            try
+            {
+                IEnumerable<CheckIn> checkIns = _checkinservice.GetAll();
+                CheckIn check = new CheckIn();
+                check.Name = model.Name;
+                check.StaffId = model.StaffNum;
+                check.VendorId = model.VendorId;
+                check.IsChecked = model.ischecked;
+
+                _checkinservice.Add(check);
+                _checkinservice.Save();
+                return Request.CreateResponse(HttpStatusCode.OK, _checkinservice);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
         }
     }
 }
