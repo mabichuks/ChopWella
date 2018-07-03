@@ -44,17 +44,7 @@ namespace Chopwella.Web.Controllers.api
                     return this.Request.CreateResponse(HttpStatusCode.Created, _checkinservice);
                 }
                 return Request.CreateResponse(HttpStatusCode.NoContent, "not checked");
-
-                //var checkday = check.FirstOrDefault(c => c.IsChecked == cs.IsChecked);
-                //if (checkday == null)
-                //    return this.Request.CreateResponse(HttpStatusCode.NoContent, "not checked");
-                ////to not allow double checkin
-                //if (check.Any(c => c.IsChecked == checkday.IsChecked))
-                //{
-                //    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "already checked in");
-                //}
-               
-
+              
             }
             catch (Exception message)
             {
@@ -63,18 +53,12 @@ namespace Chopwella.Web.Controllers.api
         }
         [Route("CheckinbyId")]
         [HttpGet]
-        public HttpResponseMessage GetCheckinbyDay(DateTime Id)
+        public HttpResponseMessage GetCheckinbyDay(int Id)
         {
             try
             {
-                IEnumerable<CheckIn> check = _checkinservice.GetAll().Select(c => new CheckIn
-                {
-                   
-                    StaffId = c.StaffId,
-                    Vendor = c.Vendor,
-                    IsChecked = c.IsChecked
-                }).ToList();
-                var checkinbyId = check.Where(m => m.Date == Id).ToList();
+                IEnumerable<CheckIn> check = _checkinservice.GetAll();
+                var checkinbyId = check.Where(m => m.StaffId == Id && m.IsChecked == true).ToList();
                 if (checkinbyId == null)
                 {
                     return Request.CreateResponse(HttpStatusCode.NotFound);
