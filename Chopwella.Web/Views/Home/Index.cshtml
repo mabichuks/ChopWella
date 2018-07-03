@@ -54,10 +54,10 @@
 
         $(".catId").change(function (event) {
             var catId = $(this).val();
-
+            $(function () {
             //if (!$.fn.DataTable.isDataTable('#checkinTb')) {
+                table.DataTable().destroy();
                 table.DataTable({
-
                     "ajax": {
                         "url": "api/chopwella/staffbyCat/" + catId,
                         "type": "GET",
@@ -97,14 +97,12 @@
                         "checkinTb": "No Record found"
                     }
                 });
+            });
             //} else {
             //    $('#checkinTb').DataTable().draw();
             //}
 
         });
-
-
-
 
 
         $('#checkinTb').on('click', 'a', function (e) {
