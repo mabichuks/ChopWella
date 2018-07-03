@@ -45,17 +45,15 @@
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script>
 
-        //$(document).ready(function () {
-        //    var datatable = $('#checkinTb').DataTable();
-        //    datatable.destroy();
-        //});
+        $(document).ready(function () {
+            var datatable = $('#checkinTb').DataTable();
+        });
 
         var table = $('#checkinTb');
 
         $(".catId").change(function (event) {
             var catId = $(this).val();
             $(function () {
-            //if (!$.fn.DataTable.isDataTable('#checkinTb')) {
                 table.DataTable().destroy();
                 table.DataTable({
                     "ajax": {
@@ -98,10 +96,6 @@
                     }
                 });
             });
-            //} else {
-            //    $('#checkinTb').DataTable().draw();
-            //}
-
         });
 
 
