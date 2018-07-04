@@ -99,12 +99,23 @@
                     });
 
                     $('#checkinTb').on('click', 'a', function (e) {
+                       
                         if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+
+                            var data = datatable.row($(this).parents('tr')).data();
+                            //console.log(data);
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/chopwella/AddtoCheckin',
+                                data: data,
+                                success: function (newchecks) {
+
+                                }
+                            });
                             $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
                         }
 
-                        var data = datatable.row($(this).parents('tr')).data();
-                        console.log(data);
+                       
                     });
 
                 });
