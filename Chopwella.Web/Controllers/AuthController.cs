@@ -1,4 +1,5 @@
-﻿using Chopwella.Web.ViewModels;
+﻿using Chopwella.Infrastructure.Identity;
+using Chopwella.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using System;
@@ -21,8 +22,8 @@ namespace Chopwella.Web.Controllers
 
         public AuthController()
         {
-            userMgr = Startup.UserManagerFactory.Invoke();
-            roleMgr = Startup.RoleManagerFactory.Invoke();
+            userMgr = AuthStartupManager.UserManagerFactory.Invoke();
+            roleMgr = AuthStartupManager.RoleManagerFactory.Invoke();
         }
 
         public ActionResult Logout()
@@ -50,15 +51,15 @@ namespace Chopwella.Web.Controllers
                     ClaimsIdentity claimsIdentity = await userMgr.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     Authmgr.SignIn(claimsIdentity);
 
-                    bool isAdmin = userMgr.IsInRole(user.Id, "Admin");
+                    bool isAdmin = userMgr.IsInRole(user.Id, "ADMIN");
 
                     if (isAdmin)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Dashboard", "Admin");
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("CheckIn", "Vendor");
                     }
 
                 }

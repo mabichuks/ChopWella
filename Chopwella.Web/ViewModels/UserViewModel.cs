@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using static Chopwella.Infrastructure.Identity.IdentityModel;
 
 namespace Chopwella.Web.ViewModels
 {
@@ -22,9 +23,8 @@ namespace Chopwella.Web.ViewModels
         [Compare("Password", ErrorMessage = "Passwords Do not match")]
         public string ConfirmPassword { get; set; }
 
-        public int RoleId { get; set; }
-        public Role Role { get; set; }
+        public string RoleName { get; set; }
 
-        public virtual IEnumerable<Role> Roles { get; set; }
+        public virtual IEnumerable<AppRole> Roles { get; set; }
     }
 }

@@ -59,7 +59,9 @@
     <Compile Include="ChopwellaDBContext.cs" />
     <Compile Include="ChopwellaRepo.cs" />
     <Compile Include="DummyData.cs" />
+    <Compile Include="Identity\AuthStartupManager.cs" />
     <Compile Include="Identity\IdentityModel.cs" />
+    <Compile Include="IUserRepo.cs" />
     <Compile Include="Migrations\201806232234190_Initial.cs" />
     <Compile Include="Migrations\201806232234190_Initial.Designer.cs">
       <DependentUpon>201806232234190_Initial.cs</DependentUpon>
@@ -84,10 +86,15 @@
     <Compile Include="Migrations\201806280912254_addEmailAddressNotationToStaff.Designer.cs">
       <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807041056037_Authentication.cs" />
+    <Compile Include="Migrations\201807041056037_Authentication.Designer.cs">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Chopwella.Core\Chopwella.Core.csproj">
@@ -129,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806280912254_addEmailAddressNotationToStaff.resx">
       <DependentUpon>201806280912254_addEmailAddressNotationToStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807041056037_Authentication.resx">
+      <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
