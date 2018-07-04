@@ -1,5 +1,6 @@
 ﻿using Chopwella.Core;
-using Chopwella.Services;
+using Chopwella.ServiceInterface;
+using Chopwella.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ using System.Web.Http;
 namespace Chopwella.Web.Controllers.api
 {
     [RoutePrefix("api/chopwella")]
-    public class CheckInController : ApiController
+    public class CheckInApiController : ApiController
     {
-        private readonly ChopWellaService<CheckIn> _checkinservice;
-        public CheckInController(ChopWellaService<CheckIn> checkinservice)
+        private readonly IServices<CheckIn> _checkinservice;
+        public CheckInApiController(IServices<CheckIn> checkinservice)
         {
             _checkinservice = checkinservice;
         }
@@ -53,20 +54,26 @@ namespace Chopwella.Web.Controllers.api
         }
         [HttpPost]
         [Route("AddtoCheckin")]
-        public HttpResponseMessage AddCheckin(CheckIn Id)
+        public HttpResponseMessage AddCheckin(CheckinViewModel cvm)
         {
             try
             {
-                var check = _checkinservice.GetSingle(Id.StaffId);                
+                var checkin = new CheckIn
+                {
+                    Name=cvm.Name,
+                    StaffId=cvm.Id,
+                    IsChecked=true,
+                    VendorId = 1
+                };
+                _checkinservice.Add(checkin);
+                return Request.CreateResponse(HttpStatusCode.OK, "checked");
 
-                _checkinservice.Add(check);
-                return Request.CreateResponse(HttpStatusCode.OK, _checkinservice);
             }
             catch (Exception ex)
             {
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
-
+            
         }       
     }
 }
