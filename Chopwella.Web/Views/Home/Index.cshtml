@@ -23,7 +23,6 @@
         <table class="table table-bordered table-striped" id="checkinTb" style="width:100%;">
             <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Name</th>
                     <th>StaffNum</th>
                     <th>Mon</th>
@@ -48,84 +47,73 @@
 
         $(document).ready(function () {
             var datatable = $('#checkinTb').DataTable();
-        });
 
-        var table = $('#checkinTb');
 
-        $(".catId").change(function (event) {
-            var catId = $(this).val();
-            $(function () {
-                table.DataTable().destroy();
-                table.DataTable({
-                    "ajax": {
-                        "url": "api/chopwella/staffbyCat/" + catId,
-                        "type": "GET",
-                        "dataType": "json",
-                        "dataSrc": "",
-                        "destroy": "true",
-                    },
-                    "columns": [
-                        { "data": "Id" },
-                        { "data": "Name" },
-                        { "data": "StaffNum" },
-                        {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
+            var table = $('#checkinTb');
+
+            $(".catId").change(function (event) {
+                var catId = $(this).val();
+                $(function () {
+                    datatable.destroy();
+                    datatable = table.DataTable({
+                        "ajax": {
+                            "url": "api/chopwella/staffbyCat/" + catId,
+                            "type": "GET",
+                            "dataType": "json",
+                            "dataSrc": "",
+                            "destroy": "true",
+                            "stateSave": "true"
                         },
+                        "columns": [
+                            { "data": "Name" },
+                            { "data": "StaffNum" },
+                            {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            },
 
-                        {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                            {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
                             }
-                        }
-                    ],
+                        ],
+                        "keepConditions": "true",
 
-                    "language": {
-                        "checkinTb": "No Record found"
-                    }
+                        "language": {
+                            "checkinTb": "No Record found"
+                        }
+                    });
+
+                    $('#checkinTb').on('click', 'a', function (e) {
+                        if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+                        }
+
+                        var data = datatable.row($(this).parents('tr')).data();
+                        console.log(data);
+                    });
+
                 });
             });
-        });
 
-
-        $('#checkinTb').on('click', 'a', function (e) {
-           
-            if (confirm("Please Confirm you are signing against your name, because you can't unsign"))
-            {       
-                
-                $.ajax({
-                    type: 'POST',
-                    url: '/api/chopwella/AddtoCheckin',
-                  
-                    data: {
-                        Id: $('#Id').val(),
-                        StaffNum: $('#StaffNum').val(),
-                        Name: $('#Name').val(),
-                        ischecked:$('.btn btn-sm').val(),
-                    },
-                    success: function (newchecks) {
-
-                    }
-                });
-                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");                         
-
-            }          
+            
 
         });
-       
 
+        
     </script>
 }
