@@ -23,6 +23,7 @@
         <table class="table table-bordered table-striped" id="checkinTb" style="width:100%;">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Name</th>
                     <th>StaffNum</th>
                     <th>Mon</th>
@@ -64,6 +65,7 @@
                         "destroy": "true",
                     },
                     "columns": [
+                        { "data": "Id" },
                         { "data": "Name" },
                         { "data": "StaffNum" },
                         {
@@ -103,12 +105,17 @@
            
             if (confirm("Please Confirm you are signing against your name, because you can't unsign"))
             {       
-                var data = $('#checkinTb').serialize();
-
+                
                 $.ajax({
                     type: 'POST',
                     url: '/api/chopwella/AddtoCheckin',
-                    data: data,
+                  
+                    data: {
+                        Id: $('#Id').val(),
+                        StaffNum: $('#StaffNum').val(),
+                        Name: $('#Name').val(),
+                        ischecked:$('.btn btn-sm').val(),
+                    },
                     success: function (newchecks) {
 
                     }
