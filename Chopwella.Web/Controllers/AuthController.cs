@@ -1,4 +1,5 @@
-﻿using Chopwella.Infrastructure.Identity;
+﻿using Chopwella.Infrastructure;
+using Chopwella.Infrastructure.Identity;
 using Chopwella.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
@@ -16,15 +17,14 @@ namespace Chopwella.Web.Controllers
     public class AuthController : Controller
     {
 
-        private UserManager<AppUser, int> userMgr;
-        private RoleManager<AppRole, int> roleMgr;
+        private readonly IUserRepo _repo;
         public IAuthenticationManager Authmgr => this.HttpContext.GetOwinContext().Authentication;
 
-        public AuthController()
+        public AuthController(IUserRepo repo)
         {
-            userMgr = AuthStartupManager.UserManagerFactory.Invoke();
-            roleMgr = AuthStartupManager.RoleManagerFactory.Invoke();
+            _repo = repo;
         }
+
 
         public ActionResult Logout()
         {
@@ -45,13 +45,14 @@ namespace Chopwella.Web.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var user = await userMgr.FindAsync(lvm.UserName, lvm.Password);
+
+                var user = await _repo.SignIn(lvm.UserName, lvm.Password);
                 if (user != null)
                 {
-                    ClaimsIdentity claimsIdentity = await userMgr.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    ClaimsIdentity claimsIdentity = await _repo.FindUserAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     Authmgr.SignIn(claimsIdentity);
 
-                    bool isAdmin = userMgr.IsInRole(user.Id, "ADMIN");
+                    bool isAdmin = _repo.IsInRole(user, "ADMIN");
 
                     if (isAdmin)
                     {

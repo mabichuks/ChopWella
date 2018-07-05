@@ -16,11 +16,11 @@ namespace Chopwella.Web.Controllers.api
     [RoutePrefix("api/user")]
     public class UserController : ApiController
     {
-        private readonly UserRepo repo;
+        private readonly IUserRepo repo;
 
-        public UserController()
+        public UserController(IUserRepo repo)
         {
-            this.repo = new UserRepo();
+            this.repo = repo;
         }
 
         [Route("create")]

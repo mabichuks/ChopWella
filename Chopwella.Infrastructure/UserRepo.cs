@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using static Chopwella.Infrastructure.Identity.IdentityModel;
@@ -58,6 +59,21 @@ namespace Chopwella.Infrastructure
 
             return await userMgr.DeleteAsync(user);
         }
+
+        public async Task<AppUser> SignIn(string username, string password)
+        {
+            var user = await userMgr.FindAsync(username, password);
+            return user;
+        }
        
+        public async Task<ClaimsIdentity> FindUserAsync(AppUser user, string authType)
+        {
+            return await userMgr.CreateIdentityAsync(user, authType);
+        }
+
+        public bool IsInRole(AppUser user, string role)
+        {
+            return userMgr.IsInRole(user.Id, role);
+        }
     }
 }
