@@ -399,7 +399,6 @@
     <Compile Include="Controllers\api\VendorApiController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -420,10 +419,7 @@
     <Content Include="Views\Admin\Staff.cshtml" />
     <Content Include="Views\Admin\Vendor.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
-    <Content Include="Views\Admin\CreateUsers.cshtml" />
-    <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Vendor\CheckIn.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
