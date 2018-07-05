@@ -1,15 +1,11 @@
 ﻿using Chopwella.Infrastructure;
-using Chopwella.Infrastructure.Identity;
 using Chopwella.Web.ViewModels;
-using Microsoft.AspNet.Identity;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using static Chopwella.Infrastructure.Identity.IdentityModel;
 
 namespace Chopwella.Web.Controllers.api
 {

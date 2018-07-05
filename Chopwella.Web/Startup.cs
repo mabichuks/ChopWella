@@ -1,15 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using Microsoft.Owin;
+using Microsoft.Owin.Builder;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Chopwella.Infrastructure;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
 using Owin;
-using static Chopwella.Infrastructure.Identity.IdentityModel;
+using Microsoft.Owin.Security.Cookies;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(Chopwella.Web.Startup))]
 
