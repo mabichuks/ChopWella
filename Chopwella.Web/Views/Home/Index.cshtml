@@ -47,66 +47,84 @@
 
         $(document).ready(function () {
             var datatable = $('#checkinTb').DataTable();
-        });
 
-        var table = $('#checkinTb');
 
-        $(".catId").change(function (event) {
-            var catId = $(this).val();
-            $(function () {
-                table.DataTable().destroy();
-                table.DataTable({
-                    "ajax": {
-                        "url": "api/chopwella/staffbyCat/" + catId,
-                        "type": "GET",
-                        "dataType": "json",
-                        "dataSrc": "",
-                        "destroy": "true",
-                    },
-                    "columns": [
-                        { "data": "Name" },
-                        { "data": "StaffNum" },
-                        {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
-                        }, {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
-                            }
+            var table = $('#checkinTb');
+
+            $(".catId").change(function (event) {
+                var catId = $(this).val();
+                $(function () {
+                    datatable.destroy();
+                    datatable = table.DataTable({
+                        "ajax": {
+                            "url": "http://localhost:60532/api/chopwella/staffbyCat/" + catId,
+                            "type": "GET",
+                            "dataType": "json",
+                            "dataSrc": "",
+                            "destroy": "true",
+                            "stateSave": "true"
                         },
+                        "columns": [
+                            { "data": "Name" },
+                            { "data": "StaffNum" },
+                            {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            }, {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
+                            },
 
-                        {
-                            "": "", "render": function () {
-                                return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                            {
+                                "": "", "render": function () {
+                                    return "<a class='btn btn-sm btn-default'> UnSigned <a/>";
+                                }
                             }
-                        }
-                    ],
+                        ],
+                        "keepConditions": "true",
 
-                    "language": {
-                        "checkinTb": "No Record found"
-                    }
+                        "language": {
+                            "emptyTable": "No Record found"
+                        }
+                    });
+
+                    $('#checkinTb').on('click', 'a', function (e) {
+                       
+                        if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
+
+                            var data = datatable.row($(this).parents('tr')).data();
+                            //console.log(data);
+                            $.ajax({
+                                type: 'POST',
+                                url: '/api/chopwella/AddtoCheckin',
+                                data: data,
+                                success: function (newchecks) {
+
+                                }
+                            });
+                            $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
+                        }
+
+                       
+                    });
+
                 });
             });
-        });
 
-
-        $('#checkinTb').on('click', 'a', function (e) {
-            if (confirm("Please Confirm you are signing against your name, because you can't unsign")) {
-                $(this).removeClass("btn-default").addClass("btn-success").text("Signed");
-            }
-
+            
 
         });
 
-
+        
     </script>
 }

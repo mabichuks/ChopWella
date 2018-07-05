@@ -1,6 +1,4 @@
-﻿using Chopwella.Infrastructure;
-using Chopwella.Web.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,27 +8,22 @@ namespace Chopwella.Web.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly UserRepo _userRepo;
-
-        public AdminController()
-        {
-            this._userRepo = new UserRepo();
-        }
         // GET: Admin
-        public ActionResult Dashboard()
+        public ActionResult Index()
         {
             return View();
         }
-
-        [HttpGet]
-        public ActionResult CreateUsers()
+        public ActionResult Staff()
         {
-            var viewmodel = new UserViewModel
-            {
-                Roles = _userRepo.GetRoles
-            };
-
-            return View(viewmodel);
+            return View();
+        }
+        public ActionResult Vendor()
+        {
+            return View();
+        }
+        public ActionResult Category()
+        {
+            return View();
         }
     }
 }
