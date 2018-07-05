@@ -2,7 +2,6 @@
 using Chopwella.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
-using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -52,7 +51,7 @@ namespace Chopwella.Web.Controllers
 
                     if (isAdmin)
                     {
-                        return RedirectToAction("Dashboard", "Admin");
+                        return RedirectToAction("Index", "Admin");
                     }
                     else
                     {

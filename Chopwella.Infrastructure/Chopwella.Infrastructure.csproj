@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201807041056037_Authentication.Designer.cs">
       <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807051121414_Auth.cs" />
+    <Compile Include="Migrations\201807051121414_Auth.Designer.cs">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\RepositoryModule.cs" />
     <Compile Include="Modules\ServiceModule.cs" />
@@ -126,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807041056037_Authentication.resx">
       <DependentUpon>201807041056037_Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807051121414_Auth.resx">
+      <DependentUpon>201807051121414_Auth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
